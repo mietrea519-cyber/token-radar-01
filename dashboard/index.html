@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-in">
+    <p class="kicker">Launch Radar</p>
+    <h1>Which pre-token protocol is worth farming next?</h1>
+    <p class="standfirst">Every protocol in the snapshot that records no token yet, ranked by what its
+      launch would be worth if its record stayed as it is — with the steps to farm each one.
+      Data: the sealed DefiLlama snapshot of <span id="as-of">…</span>. A protocol here
+      <em>records</em> no token; that is DefiLlama's record, not proof it has none.</p>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</header>
+
+<section class="model-strip">
+  <div class="model-in">
+    <h2>How the board prices a launch</h2>
+    <p id="model-text">…</p>
+  </div>
+</section>
+
+<main class="layout">
+  <section class="board-pane">
+    <div class="controls" id="controls">
+      <label class="ctl grow">Search
+        <input id="q" type="search" placeholder="Name or slug…" autocomplete="off">
+      </label>
+      <label class="ctl">Category
+        <select id="cat"></select>
+      </label>
+      <label class="ctl">Chain
+        <select id="chain"></select>
+      </label>
+      <label class="ctl check">
+        <input id="watch" type="checkbox"> Watchlist only
+        <span class="hint" id="watch-hint"></span>
+      </label>
+      <label class="ctl check">
+        <input id="rising" type="checkbox"> TVL rising (7d)
+      </label>
+      <p class="showing" id="showing" role="status"></p>
+    </div>
+    <div class="table-wrap">
+      <table id="board">
+        <thead>
+          <tr>
+            <th data-key="rank" class="num sortable">Rank</th>
+            <th data-key="name" class="sortable">Protocol</th>
+            <th data-key="category" class="sortable">Category</th>
+            <th data-key="tvl_usd" class="num sortable">TVL</th>
+            <th data-key="change_7d" class="num sortable">7d %</th>
+            <th data-key="age_days" class="num sortable">Tracked</th>
+            <th data-key="implied_value_usd" class="num sortable">Implied value</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="empty" id="empty" hidden>No protocol matches those filters. Loosen one and the radar sweeps again.</p>
+    </div>
+  </section>
+
+  <aside class="detail" id="detail" aria-live="polite"></aside>
+</main>
+
+<footer class="foot">
+  <p>Implied value is this board's own model claim, never a prediction that a token will be issued or
+    when. Protocols whose token already trades are set aside, not ranked: the radar exists to find the
+    launches that have not happened yet. Farm plans are starting points for your own research, not
+    financial advice; costs are estimates in USD and every step can be done from one wallet.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
